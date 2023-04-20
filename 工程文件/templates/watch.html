@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>webrtc监控端</title>
+     <script type="text/javascript" src="../static/jquery-3.5.1.min.js"></script> 
+    <style>
+        table,table tr th, table tr td {
+             border:1px solid #0094ff; 
+            }
+        table { 
+            width: 200px; 
+            min-height: 25px; 
+            line-height: 25px; 
+            text-align: center; 
+            border-collapse: collapse;
+        }  
+        video{
+            position: relative;
+            width: 256px;
+            height: 144x;
+            object-fit: fill;
+        }
+        button { /* 按钮美化 */
+            width: 100px; /* 宽度 */
+            height: 25px; /* 高度 */
+            border-width: 0px; /* 边框宽度 */
+            border-radius: 3px; /* 边框半径 */
+            background: #1E90FF; /* 背景颜色 */
+            cursor: pointer; /* 鼠标移入按钮范围时出现手势 */
+            outline: none; /* 不显示轮廓线 */
+            font-family: Microsoft YaHei; /* 设置字体 */
+            color: white; /* 字体颜色 */
+            font-size: 17px; /* 字体大小 */
+        }
+        button:hover { 
+            background: #5599FF;
+        }
+        #tip{
+            position: fixed;
+            left: 30%;
+            top:10%;
+            background-color: antiquewhite;
+
+        }
+    </style>
+</head>
+<body>
+    <!--
+        // switch screens
+      document.getElementById('login').hidden = true;
+      document.getElementById('game').hidden = false;
+
+    -->
+    <div id="tip">
+        感谢使用本监考系统，如果有学生登陆，监考人员可以通过点击查看按钮进行查看，视频加载需要3到5秒。<br>
+        可能会因为网络或者服务器性能问题导致没加载出视频，此时可以关闭弹出的视频，或者点击隐藏按钮来关闭视频，然后重新点击查看。<br>
+        注意请不要频繁点击按钮。<br>
+        宽带允许情况下，本系统支持多人同时观看。<br>
+        观看的实时视频只会保留前50s和后200s。<br>
+        <h3>注意：若点击“结束考试”，所有学生的录屏都将结束并退出，本次考试不需要点击此按钮</h3>
+    </div>
+    <div>
+        <button id="exitBtn" >退出</button>&nbsp;&nbsp;<button id="stopBtn" >结束考试</button>
+        <br>
+        <br>
+
+        <table id="stuInfo">
+            <tr><td>学生</td><td>状态</td><td>camera操作</td><td>screen操作</td></tr>
+            <tr id="elem" hidden><td></td><td></td>
+                <td><button id="checkCameraBtn" name="">查看</button></td>
+                <td><button id="checkScreenBtn" name="">查看</button></td>
+            </tr>
+        </table>
+    </div>
+    <div id="videos">
+        <!--video autoplay playsinline id="cameraPlayer"></video>
+        <video autoplay playsinline id="screenPlayer"></video-->
+    </div>
+    <!--button id="download">下载</button-->
+    <script autoplay type="text/javascript" charset="utf-8">{{js|safe}}</script>
+<!--        <hr>-->
+<!--    <video id="newPlayer"></video>-->
+    <!-- <script autoplay type="text/javascript" src="../static/js/watch.js"></script> -->
+</body>
+</html> 

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>webrtc登录</title>
+    <script type="text/javascript" src="../static/jquery-3.5.1.min.js"></script> 
+    <style>
+        .form{
+            width:200px;
+            height:200px;
+            margin:0 auto;
+        }
+    </style>
+</head>
+<body>
+    <form class="form" method="post" action="https://{{public_ip}}:{{public_https_port}}/user">
+        用户名<input type="text"  name="user" /><br/><br/>
+        密码<input  type="password" name="pwd" /><br/><br/>
+        <input  type="submit" name="登录"/><br/><br/>
+        {{msg}}
+    </form>
+</body>
+</html> 

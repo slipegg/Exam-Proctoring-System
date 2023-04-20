@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>webrtc修改密码</title>
+    <script type="text/javascript" src="../static/jquery-3.5.1.min.js"></script> 
+    <style>
+        .form{
+            width:200px;
+            height:200px;
+            margin:0 auto;
+        }
+    </style>
+</head>
+<body>
+    <form class="form" method="post" action="https://{{public_ip}}:{{public_https_port}}/modifyPasswd">
+        用户名<input id="user" type="text"  name="user" /><br/><br/>
+        旧密码<input id="old_pwd" type="password" name="old_pwd" /><br/><br/>
+        新密码(长度大于8，必须含大写字母、小写字母、数字、特殊字符中至少三类)
+        <input id="new_pwd" type="password" name="new_pwd" /><br/><br/>
+        确认新密码<input id="confirm_pwd" type="password" name="confirm_pwd" /><br/><br/>
+        <input  id="submit" type="submit" name="登录" disabled="true"/><br/><br/>
+        {{msg}}
+    </form>
+    <script>
+        var new_pwd = $("#new_pwd")
+        var confirm_pwd = $("#confirm_pwd")
+        var submitBtn =$("#submit")
+        function checkPass(s){
+            if(s.length < 8){
+                return 0;
+            }
+            var ls = 0;
+
+            if(s.match(/([a-z])+/)){
+                ls++;
+            }
+
+            if(s.match(/([0-9])+/)){
+                ls++;  
+            }
+
+            if(s.match(/([A-Z])+/)){
+                ls++;
+            }
+            if(s.match(/[^a-zA-Z0-9]+/)){
+                ls++;
+            }
+            if(ls>=3) return 1;
+            else return 0
+        }
+
+        console.log("new_pwd",new_pwd,"confirm",confirm_pwd,"btn",submitBtn)
+        function check(){
+            console.log("check",this)
+            //密码一致
+            if(new_pwd.val() == confirm_pwd.val()){
+                //密码复杂度验证
+                if(checkPass(new_pwd.val())){
+                    submitBtn.attr('disabled',false)
+                }else{
+                    alert("密码复杂度不够，请重新设置！");
+                    new_pwd.reset()
+                    confirm_pwd.reset()
+                }
+            }else{
+                if(new_pwd.val().length!=0 && confirm_pwd.val().length!=0){
+                    alert("两遍密码输入不一致，请重新输入");
+                }
+            }
+        }
+        new_pwd.click(()=>{console.log("click")})
+        confirm_pwd.blur(check)
+        new_pwd.blur(check)
+    </script>
+</body>
+</html> 

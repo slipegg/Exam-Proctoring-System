@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>webrtc录制</title>
+
+     <script type="text/javascript" src="../static/jquery-3.5.1.min.js"></script> 
+     <style>
+        #player{
+            position: relative;
+            width: 256px;
+            height: 144x;
+            object-fit: fill;
+        }
+        #player2{
+            position: relative;
+            width: 256px;
+            height: 144x;
+            object-fit: fill;
+        }
+     </style>
+</head>
+<body>
+
+<!-- 在开始录制之前播放和下载按钮时禁用的   disabled="" -->
+    <div>
+        是否录制音频：(若录屏选择了音频请务必在分享时勾选“分享系统音频”)<br/>
+        <input type="checkbox" id="cameraAudio" checked />摄像头音频
+        <input type="checkbox" id="screenAudio" checked />录屏音频
+        <br/>
+        是否录制视频：
+        <input type="checkbox" id="cameraVideo" checked />摄像头视频
+        <input type="checkbox" id="screenVideo" checked />录屏视频
+        <button id="confirmBtn">确认</button>
+    </div>
+    
+    <button id="recordBtn" disabled="true">开始录制</button>
+    <!--
+    <button id="downloadBtn" disabled="true">下载</button>
+    <button id="restartBtn" disabled="true">重新开始</button>
+    
+    -->
+    <button id="recnnectBtn">断线重连</button>
+    <button id="stopBtn" >退出</button>
+    <hr>
+    <video autoplay playsinline id="player"></video>
+    <video autoplay playsinline id="player2"></video>
+
+    <!--video id="newPlayer"></video-->
+    <script autoplay type="text/javascript">{{js|safe}}</script>
+    <!-- <script autoplay type="text/javascript" src="../static/js/client.js"></script> -->
+</body>
+</html> 
